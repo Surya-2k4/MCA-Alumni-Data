@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCA Alumni Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-graduation-cap"></i> MCA Alumni Portal</h1>
+                <p class="subtitle">Connect with our alumni network <span class="live-badge"><i class="fas fa-circle"></i> Live Data</span></p>
+            </div>
+        </header>
+
+        <!-- Filters Section -->
+        <section class="filters-section">
+            <div class="filters-container">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search by name or company...">
+                </div>
+                
+                <div class="filter-group">
+                    <label for="batchFilter">
+                        <i class="fas fa-calendar"></i> Batch Year
+                    </label>
+                    <select id="batchFilter">
+                        <option value="">All Batches</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="companyFilter">
+                        <i class="fas fa-building"></i> Company
+                    </label>
+                    <select id="companyFilter">
+                        <option value="">All Companies</option>
+                    </select>
+                </div>
+
+                <button class="reset-btn" id="resetBtn">
+                    <i class="fas fa-redo"></i> Reset Filters
+                </button>
+                
+                <button class="refresh-btn" id="refreshBtn">
+                    <i class="fas fa-sync-alt"></i> Refresh Data
+                </button>
+            </div>
+            
+            <div class="filter-info">
+                <div class="filtered-count" id="filteredCount" style="display: none;"></div>
+                <div class="last-updated" id="lastUpdated">Loading...</div>
+            </div>
+
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-value" id="totalAlumni">0</div>
+                    <div class="stat-label">Total Alumni</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="totalCompanies">0</div>
+                    <div class="stat-label">Companies</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="displayedCount">0</div>
+                    <div class="stat-label">Displayed</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Alumni Cards Grid -->
+        <section class="alumni-section">
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Loading alumni data...</p>
+            </div>
+
+            <div class="error-message" id="errorMessage" style="display: none;">
+                <i class="fas fa-exclamation-circle"></i>
+                <p>Failed to load data. Please check your configuration.</p>
+            </div>
+
+            <div class="alumni-grid" id="alumniGrid">
+                <!-- Alumni cards will be dynamically inserted here -->
+            </div>
+
+            <div class="no-results" id="noResults" style="display: none;">
+                <i class="fas fa-search"></i>
+                <p>No alumni found matching your filters</p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2026 MCA Alumni Portal. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
