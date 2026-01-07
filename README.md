@@ -2,8 +2,6 @@
 
 🎓 A modern, professional web portal for MCA alumni data management with live data integration from Google Forms and Sheets.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/alumni-portal)
-
 ## ✨ Features
 
 - 🔄 **Auto-Refresh**: Data automatically refreshes every 5 minutes
