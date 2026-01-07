@@ -139,6 +139,10 @@ function updateLastUpdatedDisplay() {
 
 // Populate filter dropdowns
 function populateFilters() {
+    // Clear existing options first (keep the default "All" option)
+    batchFilter.innerHTML = '<option value="">All Batches</option>';
+    companyFilter.innerHTML = '<option value="">All Companies</option>';
+    
     // Get unique batch years
     const batchYears = [...new Set(alumniData.map(a => a.batchYear))]
         .filter(year => year !== 'N/A')
@@ -151,12 +155,28 @@ function populateFilters() {
         batchFilter.appendChild(option);
     });
     
-    // Get unique companies
-    const companies = [...new Set(alumniData.map(a => a.company))]
-        .filter(company => company !== 'N/A')
-        .sort();
+    // Get unique companies (case-insensitive comparison)
+    const uniqueCompanies = new Set();
+    const companyMap = new Map();
     
-    companies.forEach(company => {
+    alumniData.forEach(a => {
+        const company = a.company;
+        const companyLower = company.toLowerCase().trim();
+        
+        // Skip N/A values
+        if (company === 'N/A' || !company) return;
+        
+        // Store the first occurrence with proper casing
+        if (!uniqueCompanies.has(companyLower)) {
+            uniqueCompanies.add(companyLower);
+            companyMap.set(companyLower, company);
+        }
+    });
+    
+    // Sort companies alphabetically
+    const sortedCompanies = Array.from(companyMap.values()).sort();
+    
+    sortedCompanies.forEach(company => {
         const option = document.createElement('option');
         option.value = company;
         option.textContent = company;
