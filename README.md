@@ -15,7 +15,7 @@
 
 ## 🚀 Live Demo
 
-[View Live Demo](mca-alumni-data.vercel.app)
+[View Live Demo](https://mca-alumni-data.vercel.app/)
 
 ---
 
